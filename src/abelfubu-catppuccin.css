@@ -1,0 +1,177 @@
+/**
+ * MIT License
+ * Copyright (c) 2018 Sarah Drasner
+ * Sarah Drasner's[@sdras] Night Owl
+ * Ported by Sara vieria [@SaraVieira]
+ * Added by Souvik Mandal [@SimpleIndian]
+ */
+
+:root {
+  --bg: #16171a;
+  --bg-selection: #c0ff9559;
+  --fg: #d3c6aa;
+  --red: #f38ba8;
+  --orange: #e69875;
+  --yellow: #fae3b0;
+  --green: #abe9b3;
+  --aqua: #89dceb;
+  --blue: #89b4fa;
+  --purple: #d699b6;
+  --grey0: #7a8478;
+  --grey1: #859289;
+  --grey2: #9da9a0;
+  --statusline1: #a7c080;
+  --statusline2: #abe9b3;
+  --statusline3: #f38ba8;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #d6deeb;
+  font-family: Neon;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 0.9em;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: var(--bg-selection);
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: var(--bg-selection);
+}
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  color: white;
+  background: var(--bg);
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: rgb(67, 78, 78);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--fg);
+}
+
+.namespace {
+  color: rgb(178, 204, 214);
+}
+
+.token.deleted {
+  color: rgba(239, 83, 80, 0.56);
+  font-style: italic;
+}
+
+.token.symbol,
+.token.property {
+  color: var(--blue);
+}
+
+.token.tag,
+.token.operator,
+.token.keyword {
+  color: var(--blue);
+}
+
+.token.boolean {
+  color: var(--aqua);
+}
+
+.token.number {
+  color: var(--fg);
+}
+
+.token.constant,
+.token.function,
+.token.builtin,
+.token.char {
+  color: var(--yellow);
+}
+
+.token.selector,
+.token.doctype {
+  color: var(--yellow);
+  font-style: italic;
+}
+
+.token.attr-name,
+.token.inserted {
+  color: var(--fg);
+  font-style: italic;
+}
+
+.token.string,
+.token.url,
+.token.entity,
+.token.attr-value,
+.language-css .token.string,
+.style .token.string {
+  color: var(--red);
+}
+
+.token.class-name,
+.token.atrule {
+  color: rgb(255, 203, 139);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: rgb(214, 222, 235);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}

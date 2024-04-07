@@ -1,5 +1,5 @@
 {
-  "name": "analog-project",
+  "name": "blog",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -32,6 +32,7 @@
     "marked-gfm-heading-id": "^3.1.0",
     "marked-highlight": "^2.0.1",
     "mermaid": "^10.2.4",
+    "prettier": "^3.2.5",
     "prismjs": "^1.29.0",
     "rxjs": "~7.5.6",
     "tslib": "^2.4.0",

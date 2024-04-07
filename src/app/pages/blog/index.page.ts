@@ -1,36 +1,47 @@
-import { Component } from '@angular/core';
 import { injectContentFiles } from '@analogjs/content';
-import PostAttributes from '../../post-attributes';
+import { JsonPipe } from '@angular/common';
+import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import PostCardComponent from '../../components/post-card.component';
+import PostAttributes from '../../post-attributes';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, PostCardComponent, JsonPipe],
   template: `
+    <input
+      #searchBox
+      type="text"
+      placeholder="Search..."
+      class="p-2 rounded bg-black w-full outline-1 focus:outline-[var(--primary)] focus:outline"
+      (keyup)="filter.set(searchBox.value)"
+    />
     <h1>Blog Archive</h1>
-    @for (post of posts;track post.attributes.slug) {
-    <a [routerLink]="['/blog/', post.attributes.slug]">
-      <h2 class="post__title">{{ post.attributes.title }}</h2>
-      <p class="post__desc">{{ post.attributes.description }}</p>
-    </a>
-    }
+    <div class="flex flex-col gap-8">
+      @for (post of posts(); track post.attributes.slug) {
+        <afb-post-card [post]="post.attributes" />
+      }
+    </div>
   `,
-  styles: [
-    `
-      a {
-        text-align: left;
-        display: block;
-        margin-bottom: 2rem;
-      }
-
-      .post__title,
-      .post__desc {
-        margin: 0;
-      }
-    `,
-  ],
 })
 export default class HomeComponent {
-  readonly posts = injectContentFiles<PostAttributes>();
+  private readonly _posts = signal(injectContentFiles<PostAttributes>());
+  protected readonly filter = signal<string>('');
+
+  protected readonly posts = computed(() =>
+    this._posts().filter((post) => {
+      const joined = `${post.attributes.title} ${post.attributes.description} ${post.attributes.tags.join(' ')}`;
+      return normalize(joined).includes(normalize(this.filter()));
+    }),
+  );
+}
+
+// normalizes a string by removing all non-alphanumeric characters and accents and converting to lowercase
+function normalize(str: string) {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]/g, '')
+    .toLowerCase();
 }
