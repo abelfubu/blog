@@ -10,9 +10,13 @@ import PostAttributes from '../post-attributes';
   template: `
     @if (post(); as post) {
       <div
-        class="flex rounded-xl overflow-hidden shadow-xl border border-gray-900"
+        class="flex flex-col md:flex-row rounded-xl overflow-hidden shadow-xl border border-gray-900"
       >
-        <img class="w-6/12" [src]="post.coverImage" [alt]="post.title" />
+        <img
+          class="w-full md:w-6/12 "
+          [src]="post.coverImage"
+          [alt]="post.title"
+        />
 
         <div class="px-5 pt-5 grow flex flex-col backdrop-blur">
           <a [routerLink]="['/blog/', post.slug]" class="grow">

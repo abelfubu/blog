@@ -3,6 +3,7 @@ export default interface PostAttributes {
   slug: string;
   description: string;
   coverImage: string;
+  imageShoutout: string;
   date: string;
   tags: string[];
 }
