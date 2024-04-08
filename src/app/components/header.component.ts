@@ -38,7 +38,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             </a>
           </li>
           <li class="ml-4 text-[var(--primary)]">
-            <a href="https://linkedin.com/abelfubu" target="_blank">
+            <a href="https://linkedin.com/in/abelfubu" target="_blank">
               <i class="fa-brands fa-linkedin"></i>
             </a>
           </li>

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 import { Meta, Title } from '@angular/platform-browser';
-import { tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 import PostAttributes from '../../post-attributes';
 
 @Component({
@@ -21,12 +21,29 @@ import PostAttributes from '../../post-attributes';
     @if (post$ | async; as post) {
       <article class="pb-8">
         <h1 class="py-0">{{ post.attributes.title }}</h1>
-        <span class="block"
-          >{{ post.attributes.date | date: 'longDate' }} | Abel de la
-          Fuente</span
-        >
-        <small [innerHTML]="post.attributes.imageShoutout"></small>
-        <img class="post__image pb-8" [src]="post.attributes.coverImage" />
+        <div class="flex gap-3 py-4 items-center">
+          <img
+            class="w-8 h-8 rounded-full"
+            src="https://avatars.githubusercontent.com/u/65258220?v=4"
+          />
+
+          <div>
+            <small class="block mb-[-8px]">Abel de la Fuente </small>
+
+            <small
+              >{{ post.readingTime }} min read -
+              <span class="text-[var(--primary)] py-0">{{
+                post.attributes.date | date: 'longDate'
+              }}</span>
+            </small>
+          </div>
+        </div>
+
+        <img class="post__image" [src]="post.attributes.coverImage" />
+        <small
+          [innerHTML]="post.attributes.imageShoutout"
+          class="text-xs block pb-4"
+        ></small>
         <analog-markdown [content]="post.content" />
       </article>
 
@@ -57,6 +74,10 @@ import PostAttributes from '../../post-attributes';
       .utterances {
         max-width: unset;
       }
+
+      small a {
+        color: var(--primary);
+      }
     `,
   ],
 })
@@ -71,6 +92,10 @@ export default class HomeComponent {
       this.meta.updateTag({ name: 'og:image', content: coverImage });
       this.meta.updateTag({ name: 'og:title', content: title });
     }),
+    map((post) => ({
+      ...post,
+      readingTime: Math.round((post.content?.length || 0) / 100 / 4),
+    })),
   );
 
   comments = viewChild<ElementRef>('comments');
