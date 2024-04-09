@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import PostAttributes from '../post-attributes';
@@ -6,15 +6,18 @@ import PostAttributes from '../post-attributes';
 @Component({
   selector: 'afb-post-card',
   standalone: true,
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, NgOptimizedImage],
   template: `
     @if (post(); as post) {
       <div
         class="flex flex-col md:flex-row rounded-xl overflow-hidden shadow-xl border border-gray-900"
       >
         <img
+          width="520"
+          priority
+          height="360"
           class="w-full md:w-6/12 "
-          [src]="post.coverImage"
+          [ngSrc]="post.coverImage"
           [alt]="post.title"
         />
 

@@ -7,10 +7,12 @@ tags:
   - development
   - design-patterns
   - structural
-coverImage: https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80
+coverImage: https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+imageShoutout: Photo by <a href="https://unsplash.com/@othentikisra?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">israel palacio</a> on <a href="https://unsplash.com/photos/two-square-blue-led-lights-ImcUkZ72oUs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+draft: true
 ---
 
-# Example Blog Post
+## Markdown syntax
 
 This is an example blog post written in markdown!
 

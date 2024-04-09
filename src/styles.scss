@@ -13,7 +13,8 @@
 
 @font-face {
   font-family: Neon;
-  src: url(/fonts/jetbrains.woff2);
+  src: url(/fonts/jetbrains.woff2) format("woff2");
+  font-display: swap;
 }
 
 :root {
@@ -44,6 +45,8 @@ body {
   max-width: var(--max-width);
   margin: auto;
   background-color: #1e222a;
+  padding: 0 2rem;
+  min-height: 100vh;
 
   &:before {
     content: "";
@@ -58,6 +61,7 @@ body {
     background-attachment: fixed;
     opacity: 90%;
     z-index: -1;
+    padding: 0 1rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -72,31 +76,36 @@ h4 {
   font-family: Merriweather, Georgia, serif;
   font-weight: inherit;
   line-height: 1;
-  padding: 3rem 0 1rem;
 }
 
 h1 {
   font-size: 3.998rem;
+  padding: 3rem 0 1rem;
 }
 
 h2 {
   font-size: 2.827rem;
+  padding: 3rem 0 1rem;
 }
 
 h3 {
   font-size: 1.999rem;
+  padding: 2rem 0 1rem;
 }
 
 h4 {
   font-size: 1.414rem;
+  padding: 2rem 0 1rem;
 }
 
 h5 {
   font-size: 1.121rem;
+  padding: 2rem 0 1rem;
 }
 
 h6 {
   font-size: 0.88rem;
+  padding: 2rem 0 1rem;
 }
 
 pre {

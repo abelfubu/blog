@@ -1,5 +1,5 @@
 import { injectContent, MarkdownComponent } from '@analogjs/content';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, NgOptimizedImage } from '@angular/common';
 import {
   Component,
   effect,
@@ -16,7 +16,7 @@ import PostAttributes from '../../post-attributes';
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [AsyncPipe, MarkdownComponent, DatePipe],
+  imports: [AsyncPipe, MarkdownComponent, DatePipe, NgOptimizedImage],
   template: `
     @if (post$ | async; as post) {
       <article class="pb-8">
@@ -24,7 +24,10 @@ import PostAttributes from '../../post-attributes';
         <div class="flex gap-3 py-4 items-center">
           <img
             class="w-8 h-8 rounded-full"
-            src="https://avatars.githubusercontent.com/u/65258220?v=4"
+            ngSrc="https://avatars.githubusercontent.com/u/65258220?v=4"
+            height="32"
+            width="32"
+            alt="Abel de la Fuente"
           />
 
           <div>
@@ -39,7 +42,13 @@ import PostAttributes from '../../post-attributes';
           </div>
         </div>
 
-        <img class="post__image" [src]="post.attributes.coverImage" />
+        <img
+          class="post__image"
+          [ngSrc]="post.attributes.coverImage"
+          [alt]="post.attributes.title"
+          width="620"
+          height="360"
+        />
         <small
           [innerHTML]="post.attributes.imageShoutout"
           class="text-xs block pb-4"
@@ -81,9 +90,10 @@ import PostAttributes from '../../post-attributes';
     `,
   ],
 })
-export default class HomeComponent {
+export default class PostComponent {
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
+
   readonly post$ = injectContent<PostAttributes>().pipe(
     tap(({ attributes: { title, description, coverImage } }) => {
       this.title.setTitle(title);

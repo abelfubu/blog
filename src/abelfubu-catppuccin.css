@@ -92,7 +92,7 @@ pre[class*="language-"] {
 .token.comment,
 .token.prolog,
 .token.cdata {
-  color: rgb(67, 78, 78);
+  color: rgb(128, 149, 149);
   font-style: italic;
 }
 

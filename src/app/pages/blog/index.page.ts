@@ -1,9 +1,23 @@
 import { injectContentFiles } from '@analogjs/content';
+import { RouteMeta } from '@analogjs/router';
 import { JsonPipe } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import PostCardComponent from '../../components/post-card.component';
 import PostAttributes from '../../post-attributes';
+import { normalize } from '../../utils/string.utils';
+
+// 09/04/2024
+// TODO: RESET ALL META TAGS OG
+export const routeMeta: RouteMeta = {
+  title: 'Abelfubu Blog',
+  meta: [
+    {
+      name: 'description',
+      content: 'Abelfubu Blog',
+    },
+  ],
+};
 
 @Component({
   selector: 'app-blog',
@@ -35,13 +49,4 @@ export default class HomeComponent {
       return normalize(joined).includes(normalize(this.filter()));
     }),
   );
-}
-
-// normalizes a string by removing all non-alphanumeric characters and accents and converting to lowercase
-function normalize(str: string) {
-  return str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-zA-Z0-9]/g, '')
-    .toLowerCase();
 }

@@ -30,6 +30,9 @@ export default defineConfig(({ mode }) => ({
             },
           },
         ],
+        sitemap: {
+          host: 'https://abelfubu.dev/',
+        },
       },
     }),
   ],

@@ -1,19 +1,22 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import SocialMediaComponent from './social-media.component';
 
 @Component({
   selector: 'afb-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, SocialMediaComponent],
   template: `
     <header class="flex justify-between items-center py-4 md:py-8">
       <img
         src="./images/abelfubu.svg"
         alt="Abelfubu logo"
         class="w-24 cursor-pointer"
+        height="48"
+        width="48"
         [routerLink]="['/']"
       />
-      <nav>
+      <nav class="flex">
         <ul class="flex list-none items-center">
           @for (link of links; track link.id) {
             <li class="ml-4">
@@ -27,27 +30,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
               </a>
             </li>
           }
-          <li class="ml-4 text-[var(--primary)]">
-            <a href="https://mastodon.social/@abelfubu" target="_blank">
-              <i class="fa-brands fa-mastodon"></i>
-            </a>
-          </li>
-          <li class="ml-4 text-[var(--primary)]">
-            <a href="https://github.com/abelfubu" target="_blank">
-              <i class="fa-brands fa-square-github"></i>
-            </a>
-          </li>
-          <li class="ml-4 text-[var(--primary)]">
-            <a href="https://linkedin.com/in/abelfubu" target="_blank">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-          </li>
-          <li class="ml-4 text-[var(--primary)]">
-            <a href="https://twitter.com/abelfubu" target="_blank"
-              ><i class="fa-brands fa-square-x-twitter"></i
-            ></a>
-          </li>
         </ul>
+        <afb-social-media />
       </nav>
     </header>
   `,
