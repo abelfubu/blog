@@ -7,13 +7,20 @@ import PostCardComponent from '../../components/post-card.component';
 import PostAttributes from '../../post-attributes';
 import { normalize } from '../../utils/string.utils';
 
-// 09/04/2024
-// TODO: RESET ALL META TAGS OG
 export const routeMeta: RouteMeta = {
   title: 'Abelfubu Blog',
   meta: [
     {
       name: 'description',
+      content: 'Abelfubu Blog',
+    },
+    {
+      name: 'og:description',
+      content:
+        'My personal blog where I write about my thoughts and experiences specially about programming and coding.',
+    },
+    {
+      name: 'og:title',
       content: 'Abelfubu Blog',
     },
   ],

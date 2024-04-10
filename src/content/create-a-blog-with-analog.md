@@ -1,7 +1,7 @@
 ---
-title: Create a blog with analog
+title: Create a blog with analog and angular
 slug: 2024-04-09-create-analog-blog
-description: Creating a blog with analog and discover about SEO, sitemaps, syntax highlighting code blocks and deploy your static site with render.
+description: Creating a blog with analog and angular and discover about SEO, sitemaps, syntax highlighting code blocks and deploy your static site with render.
 date: 2024-04-06
 tags:
   - frontend
@@ -19,15 +19,15 @@ Diving into Analog for my blogging adventure has been quite the journey. And hey
 
 ### Let's Get Rolling with Analog
 
-Alrighty, time to dive in! Grab your favorite beverage, fire up your terminal, and let's get this Analog party started.
+It's time to kick things off! Grab your favorite drink, open up your terminal, and let's dive into the world of Analog.
 
-First off, type this magic incantation:
+To get started, enter the following command:
 
 ```bash
 npm create analog@latest
 ```
 
-Now, Analog's gonna ask you a few questions. When it prompts you to select a variant, make sure to choose the blog variant like a champ:
+Analog will ask you a few questions. When prompted to select a variant, be sure to choose the blog variant:
 
 ```bash
 √ Select a template: » Analog
@@ -37,21 +37,21 @@ Now, Analog's gonna ask you a few questions. When it prompts you to select a var
     angular-v16
 ```
 
-Once you've made your choice, follow the instructions it gives you. Then, hop into the newly created folder, install those packages, and hit this command to fire up the project:
+Once you've made your selection, follow the instructions provided. Then, navigate to the newly created folder, install the necessary packages, and launch the project with:
 
 ```shell
 npm run dev
 ```
 
-And voilà! If you navigate to the web, you'll see a basic but beautiful application just waiting for your personal touch.
+And there you have it! If you visit the web, you'll find a simple yet elegant application ready for your personal touch.
 
 ### Front Matter Matters
 
-Alright, time to get down to the nitty-gritty of your blog's front matter. This stuff might sound fancy, but trust me, it's super important.
+Let's delve into the details of your blog's front matter. This might sound fancy, but it's crucial stuff.
 
-So, first things first, head on over to the src/content directory. There, you'll find your very first blog post, chilling in markdown format.
+First, head to the `src/content` directory. There, you'll discover your very first blog post, stored in markdown format.
 
-Open it up, and you'll see some front matter data (or meta data, if you wanna get fancy) for your post. It's like the backstage pass to your blog, holding all the key info:
+Open it up, and you'll see some front matter data containing essential information about your post:
 
 ```yaml
 title: My First Post
@@ -60,7 +60,7 @@ description: My First Post Description
 coverImage: https://images.unsplash.com/photo...
 ```
 
-Now, here's the cool part. You can customize this front matter to your heart's content. Want to add more info? Go for it! Just dive into the src/post-attributes.ts file, and tweak the interface to fit your needs:
+Here's the exciting part: you can customize this front matter to your heart's content. If you want to add more details, simply modify the interface in the src/post-attributes.ts file:
 
 ```typescript
 export default interface PostAttributes {
@@ -76,17 +76,9 @@ Easy peasy, right? Your blog, your rules.
 
 ### Search Engine Optimization SEO
 
-Alright, let's talk about getting your blog noticed by the big guns of the internet: search engines.
+Now, let's ensure your blog gets noticed by search engines. In the `src/app/pages/blog/[slug].page.ts` file, you'll find the key to optimizing your pages for search results.
 
-So, you've got this file called src/app/pages/blog/[slug].page.ts. It's like the secret sauce behind your blog's pages. Open it up, and you'll find a simple component doing its thing.
-
-But here's the deal: if you want your blog to shine in the search results, you gotta give it some love. That's where SEO comes in.
-
-Now, don't worry, it's not as scary as it sounds. With Analog and Angular, you've got some handy tools at your disposal.
-
-In that blog/[slug].page.ts file, you'll notice a nifty little observable called post$. It's like your blog's best friend, holding all the juicy details about your post.
-
-But wait, there's more! You can use this buddy to update all the important SEO stuff, like the title and meta tags. Just inject some Angular magic:
+Utilize the post$ observable to update important SEO elements like title and meta tags:
 
 ```typescript
 import { Meta, Title } from '@angular/platform-browser';
@@ -108,13 +100,13 @@ export default class BlogPostComponent {
 }
 ```
 
-Boom! With a few lines of code, you're telling those search engines, "Hey, check out my awesome blog post!"
+With these changes, your blog posts will stand out in search engine results.
 
 ### Sitemaps
 
-So, here's the deal: we want search engines to easily find and index all the awesome content you're creating. And one way to help them out is by having a sitemap.xml file that lists all the URLs of your blog posts.
+Help search engines discover and index your content by implementing a `sitemap.xml` file. Analog and Vite make this process effortless.
 
-Now, lucky for us, Analog and Vite make this process a breeze. Check out this snippet you can add to your vite.config.js file:
+Update your `vite.config.ts` file with the following snippet:
 
 ```javascript
 import { defineConfig } from "vite";
@@ -134,30 +126,24 @@ export default defineConfig(({ mode }) => ({
 }));
 ```
 
-With this setup, Analog will automatically generate your sitemap.xml file whenever you add new posts or make changes to your blog. How cool is that?
-
-So go ahead, update your vite.config.js file, kick back, and let Analog do the heavy lifting for you. Your blog's SEO game just got a major boost!
-
-Ready to dive back into the blog-building fun? Let's keep the momentum going!
+Now, Analog will automatically generate your `sitemap.xml` file, ensuring your blog stays visible to search engines.
 
 ### Syntax highlighting
 
-Listen up, fellow coders! We know you're itching to showcase your code chops, and guess what? We've got your back.
-
-First things first, we've already got Prism.js set up and ready to roll in the template variant. No need to break a sweat there!
+Display your code snippets with style using Prism.js. It's already set up and ready to go in the template variant.
 
 ```json
 // package.json
 "prismjs": "^1.29.0",
 ```
 
-Now, to make your code pop, simply add the following styles to your styles.scss file:
+To enhance your code's appearance, add Prism.js styles to your `styles.scss` file:
 
 ```scss
 @import "prismjs/themes/prism-okaidia.min.css";
 ```
 
-And that's it! Prism.js will work its magic and automatically highlight your code snippets.
+Now, any code you include in your markdown files will be beautifully highlighted.
 
 So, go ahead and sprinkle some code into your markdown files like so:
 
@@ -169,23 +155,15 @@ function hello(name: string): void {
 ```
 ````
 
-Watch as your code comes to life in vibrant colors, ready to dazzle your readers!
-
-Ready to flex those coding muscles? Let's make your blog shine!
+Watch as your code comes to life in vibrant colors!
 
 ### Comments
 
-Hey there, blogosphere explorers! Ready to invite some conversation onto your blog? Let's talk about adding comments.
+Encourage engagement by enabling comments on your blog posts. With [Utterances](https://utteranc.es/), this process is straightforward.
 
-Now, we all know that sharing is caring, and what better way to engage with your readers than by letting them leave their thoughts right on your posts? Enter Utterances – a nifty little comments widget built on GitHub issues.
+Head to the Utterances website, set up the widget for your GitHub account, and choose a repository and theme.
 
-But don't worry, setting it up is a breeze! Here's how:
-
-Head over to the Utterances website and set up the widget for your GitHub account. Choose a repository, pick a theme, and you're good to go.
-
-Now, here's the fun part. Add the following code snippet to your blog post component under src/app/pages/blog/[slug].page.ts:
-
-In your template, add a div with a template variable to hold the comments:
+Next, add the following code to your blog post component under src/app/pages/blog/[slug].page.ts:
 
 ```html
 <div #comments></div>
@@ -210,15 +188,13 @@ addCommentsEffect = effect(() => {
 });
 ```
 
-And that's it! Your readers can now join the conversation right on your blog posts, thanks to Utterances.
-
-So go ahead, spark some discussions, and let the comments flow! After all, the best conversations happen when we're all in it together.
+Now, readers can share their thoughts directly on your blog posts.
 
 ### Deploy your static site
 
-Alrighty, time to take your blog live and share your brilliance with the world! One of the coolest perks of using Analog is how it makes deploying a static site a breeze. Plus, you get all those sweet SEO and performance benefits too!
+Ready to share your blog with the world? Analog makes deploying your site a breeze.
 
-Now, grab your trusty vite.config.js file and let's add some magic to ensure your posts are automatically generated every time you build your project.
+Update your `vite.config.ts` file to ensure your posts are generated automatically:
 
 ```javascript
 ...
@@ -248,15 +224,15 @@ Now, grab your trusty vite.config.js file and let's add some magic to ensure you
 ...
 ```
 
-And just like that, your blog posts will be ready to rock 'n roll whenever you hit that build button. Ain't technology grand?
+And just like that, your blog posts will be set up and ready whenever you hit the build button.
 
-I know, right? It's pretty darn awesome. Now, let's get that blog of yours out there for the world to see!
+Now, let's showcase your blog to the world!
 
-Alright, time to take your blog live and share your brilliance with the world! Thanks to Analog, deploying your site is as easy as pie. Whether you're opting for a static generated site or SSR (Server-Side Rendering), Analog's got your back.
+It's time to take your blog live and share your work with the world! Thanks to Analog, deploying your site is straightforward. Whether you're opting for a static generated site or SSR (Server-Side Rendering), Analog provides the tools you need.
 
-Head on over to the Analog docs and dive into the deployment section. Trust me, it's a treasure trove of options waiting to be explored: Analog Deployment Docs https://analogjs.org/docs/features/deployment/overview.
+Head over to the Analog docs and explore the deployment section. It offers various options to suit your needs: [Analog Deployment Docs](https://analogjs.org/docs/features/deployment/providers).
 
-Now, let me tell you about my personal favorite: Render https://render.com/. I've used it in the past, and let me tell you, deploying on Render is like a walk in the park. Just hop on over to their website, create an account (if you haven't already), and voila! You'll find yourself in your dashboard, ready to deploy your masterpiece.
+Let me share a popular choice: [Render](https://render.com/). It's user-friendly and efficient. Just visit their website, create an account (if you haven't already), and you'll be ready to deploy your site.
 
 1. Create a new Static Site and select the repository that contains your code.
 
@@ -270,8 +246,10 @@ DONE!
 
 ### Conclusion
 
-And there you have it, folks! You've just taken the first steps into the wild world of blogging with Analog. From the initial excitement of starting a new project to the satisfaction of seeing it all come together, this journey has been quite the ride.
+Congratulations on publishing your inaugural blog post! This marks the beginning of your blogging journey, and it's an exciting milestone to celebrate.
 
-As you continue to tweak and tinker with your blog, remember to have fun along the way. Whether you're sharing coding tips, personal stories, or just your thoughts on the latest tech trends, your blog is your space to shine.
+As you navigate this new endeavor, remember that every blogger starts somewhere, and there's always room to grow and learn along the way. Embrace the process, enjoy the journey, and don't be afraid to share your experiences, thoughts, and insights with your readers.
 
-So, keep on blogging, keep on exploring, and most importantly, keep on being you. The internet is waiting to hear what you have to say, so go ahead and make your mark!
+Your blog is a space for exploration, self-expression, and connection. So, keep writing, keep experimenting, and most importantly, keep being yourself.
+
+Here's to the start of something special. Happy blogging!
