@@ -60,7 +60,7 @@ description: My First Post Description
 coverImage: https://images.unsplash.com/photo...
 ```
 
-Here's the exciting part: you can customize this front matter to your heart's content. If you want to add more details, simply modify the interface in the src/post-attributes.ts file:
+Here's the exciting part: you can customize this front matter to your heart's content. If you want to add more details, simply modify the interface in the `src/post-attributes.ts` file:
 
 ```typescript
 export default interface PostAttributes {
@@ -163,7 +163,7 @@ Encourage engagement by enabling comments on your blog posts. With [Utterances](
 
 Head to the Utterances website, set up the widget for your GitHub account, and choose a repository and theme.
 
-Next, add the following code to your blog post component under src/app/pages/blog/[slug].page.ts:
+Next, add the following code to your blog post component under `src/app/pages/blog/[slug].page.ts`:
 
 ```html
 <div #comments></div>

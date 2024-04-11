@@ -125,7 +125,7 @@ export default class PostComponent {
           name: 'Abelfubu',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://abelfubu.dev/assets/images/abelfubu.png',
+            url: 'https://abelfubu.dev/images/abelfubu-round.svg',
           },
         },
         headline: title,
