@@ -36,7 +36,7 @@ export const routeMeta: RouteMeta = {
       type="text"
       placeholder="Search..."
       class="p-2 rounded bg-black w-full outline-1 focus:outline-[var(--primary)] focus:outline"
-      (keyup)="filter.set(searchBox.value)"
+      (keyup.enter)="[filter.set(searchBox.value), searchBox.select()]"
     />
     <h1>Blog Archive</h1>
     <div class="flex flex-col gap-8">
