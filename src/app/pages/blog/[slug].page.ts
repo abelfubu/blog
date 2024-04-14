@@ -69,6 +69,7 @@ export const routeMeta: RouteMeta = {
           class="post__image"
           [ngSrc]="post.attributes.coverImage"
           [alt]="post.attributes.title"
+          priority
           width="620"
           height="360"
         />
