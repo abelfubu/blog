@@ -6,27 +6,39 @@ import { Component } from '@angular/core';
   template: `
     <ul class="flex list-none items-center">
       <li class="ml-4 text-[var(--primary)]">
-        <a href="https://mastodon.social/@abelfubu" target="_blank">
+        <a
+          href="https://mastodon.social/@abelfubu"
+          target="_blank"
+          aria-label="Link to mastodon profile"
+        >
           <i class="fa-brands fa-mastodon"></i>
-          <span class="hidden">Mastodon</span>
         </a>
       </li>
       <li class="ml-4 text-[var(--primary)]">
-        <a href="https://github.com/abelfubu" target="_blank">
+        <a
+          href="https://github.com/abelfubu"
+          target="_blank"
+          aria-label="Link to github profile"
+        >
           <i class="fa-brands fa-square-github"></i>
-          <span class="hidden">Github</span>
         </a>
       </li>
       <li class="ml-4 text-[var(--primary)]">
-        <a href="https://linkedin.com/in/abelfubu" target="_blank">
+        <a
+          href="https://linkedin.com/in/abelfubu"
+          target="_blank"
+          aria-label="Link to linkedin profile"
+        >
           <i class="fa-brands fa-linkedin"></i>
-          <span class="hidden">Linkedin</span>
         </a>
       </li>
       <li class="ml-4 text-[var(--primary)]">
-        <a href="https://twitter.com/abelfubu" target="_blank">
+        <a
+          href="https://twitter.com/abelfubu"
+          target="_blank"
+          aria-label="Link to twitter profile"
+        >
           <i class="fa-brands fa-square-x-twitter"></i>
-          <span class="hidden">Twitter</span>
         </a>
       </li>
     </ul>

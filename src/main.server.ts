@@ -1,10 +1,18 @@
+import 'prismjs';
 import 'zone.js/node';
+// import 'prismjs/plugins/toolbar/prism-toolbar.js';
+// import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js';
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/components/prism-markdown.js';
+import 'prismjs/components/prism-scss.js';
+import 'prismjs/components/prism-yaml.js';
+
 import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { renderApplication } from '@angular/platform-server';
 
-import { config } from './app/app.config.server';
 import { AppComponent } from './app/app.component';
+import { config } from './app/app.config.server';
 
 if (import.meta.env.PROD) {
   enableProdMode();

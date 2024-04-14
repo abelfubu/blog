@@ -1,18 +1,21 @@
 import { injectContent, MarkdownComponent } from '@analogjs/content';
 import { RouteMeta } from '@analogjs/router';
-import { AsyncPipe, DatePipe, NgOptimizedImage } from '@angular/common';
+import { AsyncPipe, isPlatformServer, NgOptimizedImage } from '@angular/common';
 import {
   Component,
   effect,
   ElementRef,
   inject,
-  signal,
+  PLATFORM_ID,
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import { map, tap } from 'rxjs';
+import { AvatarComponent } from '../../components/avatar.component';
 import { JsonLdComponent } from '../../components/json-ld.component';
+import { PostInfoComponent } from '../../components/post-info.component';
 import PostAttributes from '../../post-attributes';
 
 export const routeMeta: RouteMeta = {
@@ -20,6 +23,10 @@ export const routeMeta: RouteMeta = {
     {
       name: 'og:type',
       content: 'article',
+    },
+    {
+      name: 'Author',
+      content: 'Abel de la Fuente',
     },
   ],
 };
@@ -29,35 +36,28 @@ export const routeMeta: RouteMeta = {
   standalone: true,
   imports: [
     AsyncPipe,
-    MarkdownComponent,
-    DatePipe,
-    NgOptimizedImage,
     JsonLdComponent,
+    AvatarComponent,
+    NgOptimizedImage,
+    MarkdownComponent,
+    PostInfoComponent,
   ],
   template: `
     @if (post$ | async; as post) {
+      <!-- JSON LD SCHEMA -->
       <afb-json-ld [json]="schema()" />
+
+      <!-- ARTICLE -->
       <article class="pb-8">
         <h1 class="py-0">{{ post.attributes.title }}</h1>
+
+        <!-- POST INFO -->
         <div class="flex gap-3 py-4 items-center">
-          <img
-            class="w-8 h-8 rounded-full"
-            ngSrc="https://avatars.githubusercontent.com/u/65258220?v=4"
-            height="32"
-            width="32"
-            alt="Abel de la Fuente"
+          <afb-avatar />
+          <afb-post-info
+            [readingTime]="readingTime()"
+            [date]="post.attributes.date"
           />
-
-          <div>
-            <small class="block mb-[-8px]">Abel de la Fuente </small>
-
-            <small
-              >{{ post.readingTime }} min read -
-              <span class="text-[var(--primary)] py-0">{{
-                post.attributes.date | date: 'longDate'
-              }}</span>
-            </small>
-          </div>
         </div>
 
         <img
@@ -69,8 +69,10 @@ export const routeMeta: RouteMeta = {
         />
         <small
           [innerHTML]="post.attributes.imageShoutout"
-          class="text-xs block pb-4"
+          class="text-xs block"
         ></small>
+
+        <!-- CONTENT -->
         <analog-markdown [content]="post.content" />
       </article>
 
@@ -100,7 +102,7 @@ export const routeMeta: RouteMeta = {
 export default class PostComponent {
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
-  protected schema = signal<Record<string, unknown>>({});
+  private readonly platformId = inject(PLATFORM_ID);
 
   readonly post$ = injectContent<PostAttributes>().pipe(
     tap(({ attributes: { title, description, coverImage, slug, date } }) => {
@@ -113,37 +115,27 @@ export default class PostComponent {
         name: 'og:url',
         content: `https://abelfubu.dev/blog/${slug}`,
       });
-      this.schema.set({
-        '@context': 'http://schema.org/',
-        '@type': 'Article',
-        author: {
-          '@type': 'Person',
-          name: 'Abel de la Fuente',
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Abelfubu',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://abelfubu.dev/images/abelfubu-round.svg',
-          },
-        },
-        headline: title,
-        image: coverImage,
-        datePublished: date,
-        dateModified: date,
-      });
     }),
-    map((post) => ({
-      ...post,
-      readingTime: Math.round((post.content?.length || 0) / 100 / 4),
-    })),
+  );
+
+  protected readonly readingTime = toSignal(
+    this.post$.pipe(
+      map(({ content }) => Math.round((content?.length || 0) / 100 / 4)),
+    ),
+  );
+
+  protected schema = toSignal(
+    this.post$.pipe(
+      map(({ attributes }) => this.generateJsonLdSchema(attributes)),
+    ),
+    { initialValue: {} },
   );
 
   comments = viewChild<ElementRef>('comments');
 
   addCommentsEffect = effect(() => {
-    if (!this.comments()?.nativeElement) return;
+    const comments = this.comments();
+    if (!comments?.nativeElement || isPlatformServer(this.platformId)) return;
 
     const script = document.createElement('script');
     script.src = 'https://utteranc.es/client.js';
@@ -152,6 +144,31 @@ export default class PostComponent {
     script.setAttribute('theme', 'dark-blue');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
-    this.comments()?.nativeElement.appendChild(script);
+    comments.nativeElement.appendChild(script);
   });
+
+  private generateJsonLdSchema(
+    attributes: Partial<PostAttributes>,
+  ): Record<string, unknown> {
+    return {
+      '@context': 'http://schema.org/',
+      '@type': 'Article',
+      author: {
+        '@type': 'Person',
+        name: 'Abel de la Fuente',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Abelfubu',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://abelfubu.dev/images/abelfubu-round.svg',
+        },
+      },
+      headline: attributes.title,
+      image: attributes.coverImage,
+      datePublished: attributes.date,
+      dateModified: attributes.date,
+    };
+  }
 }
