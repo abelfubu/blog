@@ -11,13 +11,13 @@ coverImage: https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=
 imageShoutout: Photo by <a href="https://unsplash.com/@retrosupply?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">RetroSupply</a> on <a href="https://unsplash.com/photos/vintage-teal-typewriter-beside-book-jLwVAUtLOAQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 ---
 
-### Hey, Let's Talk Blogging!
+## Hey, Let's Talk Blogging!
 
 So, here's the deal: I'm all about productivity hacks, from DIY keyboards to tinkering with Vim, building a knowledge management system with obsidian.md and devouring productivity books like "Atomic Habits." But you know what's been on my backburner forever? Starting my own blog. Then Analog 1.0 dropped, and being an Angular fan, I thought, "Why not give it a shot?"
 
 Diving into Analog for my blogging adventure has been quite the journey. And hey, I'm here to share the scoop with you! Let's walk through the process of creating your very own blog using Analog.
 
-### Let's Get Rolling with Analog
+## Let's Get Rolling with Analog
 
 It's time to kick things off! Grab your favorite drink, open up your terminal, and let's dive into the world of Analog.
 
@@ -45,7 +45,7 @@ npm run dev
 
 And there you have it! If you visit the web, you'll find a simple yet elegant application ready for your personal touch.
 
-### Front Matter Matters
+## Front Matter Matters
 
 Let's delve into the details of your blog's front matter. This might sound fancy, but it's crucial stuff.
 
@@ -74,7 +74,7 @@ export default interface PostAttributes {
 
 Easy peasy, right? Your blog, your rules.
 
-### Search Engine Optimization SEO
+## Search Engine Optimization SEO
 
 Now, let's ensure your blog gets noticed by search engines. In the `src/app/pages/blog/[slug].page.ts` file, you'll find the key to optimizing your pages for search results.
 
@@ -102,7 +102,7 @@ export default class BlogPostComponent {
 
 With these changes, your blog posts will stand out in search engine results.
 
-### Sitemaps
+## Sitemaps
 
 Help search engines discover and index your content by implementing a `sitemap.xml` file. Analog and Vite make this process effortless.
 
@@ -128,7 +128,7 @@ export default defineConfig(({ mode }) => ({
 
 Now, Analog will automatically generate your `sitemap.xml` file, ensuring your blog stays visible to search engines.
 
-### Syntax highlighting
+## Syntax highlighting
 
 Display your code snippets with style using Prism.js. It's already set up and ready to go in the template variant.
 
@@ -157,7 +157,7 @@ function hello(name: string): void {
 
 Watch as your code comes to life in vibrant colors!
 
-### Comments
+## Comments
 
 Encourage engagement by enabling comments on your blog posts. With [Utterances](https://utteranc.es/), this process is straightforward.
 
@@ -190,7 +190,7 @@ addCommentsEffect = effect(() => {
 
 Now, readers can share their thoughts directly on your blog posts.
 
-### Deploy your static site
+## Deploy your static site
 
 Ready to share your blog with the world? Analog makes deploying your site a breeze.
 
@@ -244,7 +244,7 @@ Click 'Create Static Site'
 
 DONE!
 
-### Conclusion
+## Conclusion
 
 Congratulations on publishing your inaugural blog post! This marks the beginning of your blogging journey, and it's an exciting milestone to celebrate.
 

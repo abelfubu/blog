@@ -13,7 +13,6 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import { map, tap } from 'rxjs';
-import { AvatarComponent } from '../../components/avatar.component';
 import { JsonLdComponent } from '../../components/json-ld.component';
 import { PostInfoComponent } from '../../components/post-info.component';
 import PostAttributes from '../../post-attributes';
@@ -37,7 +36,6 @@ export const routeMeta: RouteMeta = {
   imports: [
     AsyncPipe,
     JsonLdComponent,
-    AvatarComponent,
     NgOptimizedImage,
     MarkdownComponent,
     PostInfoComponent,
@@ -53,7 +51,14 @@ export const routeMeta: RouteMeta = {
 
         <!-- POST INFO -->
         <div class="flex gap-3 py-4 items-center">
-          <afb-avatar />
+          <img
+            class="w-8 h-8 rounded-full"
+            ngSrc="https://avatars.githubusercontent.com/u/65258220?v=4"
+            height="32"
+            width="32"
+            alt="Abel de la Fuente"
+          />
+
           <afb-post-info
             [readingTime]="readingTime()"
             [date]="post.attributes.date"
