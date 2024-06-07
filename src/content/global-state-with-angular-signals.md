@@ -6,7 +6,7 @@ date: 2024-06-01
 tags:
   - angular
   - signals
-  - DIP
+  - DI
 coverImage: https://images.unsplash.com/photo-1533743732795-82edc843f03e?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 imageShoutout: Photo by <a href="https://unsplash.com/@andriyko?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Andriyko Podilnyk</a> on <a href="https://unsplash.com/photos/low-angle-photo-of-truss-tower-dZ301bzWqQM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 ---

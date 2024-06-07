@@ -51,9 +51,11 @@ export default class HomeComponent {
   protected readonly filter = signal<string>('');
 
   protected readonly posts = computed(() =>
-    this._posts().filter((post) => {
-      const joined = `${post.attributes.title} ${post.attributes.description} ${post.attributes.tags.join(' ')}`;
-      return normalize(joined).includes(normalize(this.filter()));
-    }),
+    this._posts()
+      .filter((post) => {
+        const joined = `${post.attributes.title} ${post.attributes.description} ${post.attributes.tags.join(' ')}`;
+        return normalize(joined).includes(normalize(this.filter()));
+      })
+      .reverse(),
   );
 }
