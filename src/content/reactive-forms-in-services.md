@@ -70,7 +70,7 @@ export class UserFormsService {
 
   readonly hobbies = this.basicForm.controls.hobbies;
 
-  addHobbie() {
+  addHobby() {
     this.basicForm.controls.hobbies.push(
       this.fb.nonNullable.control("Programming")
     );
@@ -117,13 +117,13 @@ export class AppComponent {
       <input type="text" formControlName="name" />
       <input type="text" formControlName="age" />
       <div formArrayName="hobbies">
-        @for (let hobby of forms.hobbies.controls; let i = $index) {
-          <input [formControlName]="i" />
+        @for (hobby of forms.hobbies.controls; track $index) {
+          <input [formControl]="hobby" />
         }
       </div>
     </form>
 
-    <button (click)="forms.addHobbie()">ADD HOBBIE</button>
+    <button (click)="forms.addHobby()">ADD HOBBIE</button>
   `,
 })
 export class UserInfoComponent {
