@@ -1,0 +1,37 @@
+---
+const socialLinks = [
+  {
+    name: 'mastodon',
+    url: 'https://mastodon.social/@abelfubu',
+    icon: 'fa-brands fa-mastodon'
+  },
+  {
+    name: 'github',
+    url: 'https://github.com/abelfubu',
+    icon: 'fa-brands fa-square-github'
+  },
+  {
+    name: 'linkedin',
+    url: 'https://linkedin.com/in/abelfubu',
+    icon: 'fa-brands fa-linkedin'
+  },
+  {
+    name: 'twitter',
+    url: 'https://twitter.com/abelfubu',
+    icon: 'fa-brands fa-square-x-twitter'
+  }
+]
+---
+<ul class="flex list-none items-center">
+  {socialLinks.map(({url, icon, name}) => (
+    <li class="ml-4 text-[var(--primary)]">
+      <a
+        href={url}
+        target="_blank"
+        aria-label={`Link to ${name} profile`}
+      >
+        <i class={icon}></i>
+      </a>
+    </li>
+  ))}
+</ul>

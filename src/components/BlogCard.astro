@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+const {
+  post: { data, slug },
+} = Astro.props;
+
+type Props = { post: CollectionEntry<'blog'> };
+---
+
+<a
+  class="flex flex-col md:flex-row rounded-xl overflow-hidden shadow-xl border border-gray-900"
+  href={`/blog/${slug}`}
+>
+  <img
+    width="520"
+    height="360"
+    class="w-full md:w-6/12"
+    src={data.coverImage}
+    alt={data.title}
+  />
+
+  <div class="px-5 pt-5 grow flex flex-col backdrop-blur">
+    <div class="grow">
+      <span class="text-4xl block">{data.title}</span>
+
+      <span
+        >{
+          data.date.toLocaleDateString('en-EN', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })
+        }</span
+      >
+      <p>{data.description}</p>
+    </div>
+    <div class="flex flex-wrap gap-2 pb-3">
+      {
+        (data.tags || []).map((tag: string) => (
+          <div class="text-sm uppercase px-1 py-0.5">
+            <strong class="text-xs text-[var(--primary)]">{tag}</strong>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</a>
+
+<style>
+  img {
+    aspect-ratio: 16 / 11;
+  }
+</style>

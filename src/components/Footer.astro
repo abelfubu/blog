@@ -1,0 +1,18 @@
+---
+import SocialMedia from './SocialMedia.astro';
+---
+
+<footer class="flex flex-col items-center justify-center p-8">
+  <small>Abel de la Fuente © {new Date().getFullYear()}</small>
+  <SocialMedia />
+  <small
+    >Built with
+    <a
+      class="text-[var(--primary)]"
+      href="https://astro.build/"
+      target="_blank"
+    >
+      Astro
+    </a>
+  </small>
+</footer>

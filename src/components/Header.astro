@@ -1,0 +1,29 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import SocialMedia from './SocialMedia.astro';
+
+const links = [
+	// { id: 1, text: 'Home', url: '' },
+	{ id: 2, text: 'Blog', url: '/blog' },
+];
+---
+
+<header class="flex justify-between items-center py-4 md:py-8">
+	<img
+		src="/images/abelfubu.svg"
+		alt="Abelfubu logo"
+		class="w-24 cursor-pointer"
+		height="48"
+		width="48"
+		[routerLink]="['/']"
+	/>
+	<nav class="flex">
+		<ul class="flex list-none items-center">
+			{links.map(link => (
+				<HeaderLink href={link.url}>{link.text}</HeaderLink>
+			))}
+		</ul>
+
+		<SocialMedia />
+	</nav>
+</header>
