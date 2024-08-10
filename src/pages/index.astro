@@ -3,6 +3,7 @@ import Avatar from '../components/Avatar.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Tabs from '../components/Tabs';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const jobs = [
@@ -173,18 +174,7 @@ const projects = [
       <!-- Experience -->
       <section>
         <h1>Experience</h1>
-        {
-          jobs.map((job) => (
-            <div>
-              <p class="text-4xl mb-0">{job.company}</p>
-              <p class="m-0 text-2xl text-[var(--primary)]">{job.title}</p>
-              <p>{job.date}</p>
-              {job.description.map((desc) => (
-                <p>{desc}</p>
-              ))}
-            </div>
-          ))
-        }
+        <Tabs items={jobs} client:visible />
       </section>
 
       <!-- Projects -->
