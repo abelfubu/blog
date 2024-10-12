@@ -11,7 +11,7 @@ import solidJs from "@astrojs/solid-js";
 export default defineConfig({
   site: 'https://abelfubu.dev',
   integrations: [expressiveCode({
-    themes: ['poimandres'],
+    themes: ['catppuccin-mocha'],
     plugins: [pluginLineNumbers()]
   }), mdx(), sitemap(), tailwind(), solidJs()]
 });
