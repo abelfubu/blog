@@ -1,23 +1,20 @@
 @font-face {
-  font-family: "Major Custom";
-  src: url("/fonts/major.ttf") format("ttf");
-  font-weight: 400;
+  font-family: "Alumni Sans Pinstripe";
+  src: url("/fonts/alumni.ttf?v=1") format("truetype");
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
-  font-weight: 400;
+  font-family: "Open Sans";
+  src: url("/fonts/opensans.ttf") format("truetype");
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-weight: 700;
+  font-family: "JetBrains Mono";
+  src: url("/fonts/jetbrains.ttf") format("truetype");
   font-style: normal;
   font-display: swap;
 }
@@ -60,7 +57,7 @@ html {
 body {
   color: #fff;
   background-color: transparent;
-  font-family: "Atkinson", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.2rem;
   margin: 0;
   max-width: var(--max-width);
@@ -73,7 +70,7 @@ body {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url(/images/sunset.webp);
+    background-image: url(/images/clouds.webp);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -94,7 +91,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Major Custom", monospace;
+  font-family: "Alumni Sans Pinstripe", sans-serif;
   font-weight: inherit;
   line-height: 1;
 }
@@ -164,7 +161,7 @@ p {
   margin: 1rem auto 1.5rem;
   height: auto;
   line-height: 1.45;
-  font-weight: 400;
+  font-weight: 300;
 
   a {
     color: var(--primary);
@@ -184,6 +181,7 @@ p {
     color: var(--fg);
     border-radius: 4px;
     font-size: 1rem;
+    font-family: "JetBrains Mono", monospace;
   }
 }
 
